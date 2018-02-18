@@ -1,0 +1,16 @@
+{{#each things}}
+	<div class="card card-body mb-2">
+		<h4>{{subject}}</h4>
+		<h6>Dued @ {{formatDate deadline}}</h6>
+		<p>{{details}}</p>
+		<div class="btn-group">
+			<a href="/things/edit/{{id}}" class="btn btn-primary mr-2">Edit</a>
+			<form method="post" action="/things/{{id}}?_method=DELETE">
+				<input type="hidden" name="_method" value="DELTET">
+				<button type="submit" class="btn btn-danger">Delete</button>
+			</form>
+		</div>
+	</div>
+{{else}}
+	<p>No my thing listed</p>
+{{/each}}

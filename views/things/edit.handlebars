@@ -1,0 +1,92 @@
+{{#each errors}}
+	<div class="alert alert-danger">{{text}}</div>
+{{else}}
+
+{{/each}}
+
+<div class="card card-body">
+	<h3>Edit My Thing</h3>
+	<form action="/things/{{thing.id}}?_method=PUT" method='post'>
+		<input type="hidden" name="_method" value="PUT">
+		<div class="form-group">
+			<label for="subject">Subject <b><font color='red'>*</font></b></label>
+			<input type="text" class='form-control' name='subject' value='{{thing.subject}}' required>
+		</div>
+		<div class="form-group">
+			<label for="detail">Details <b><font color='red'>*</font></b></label>
+			<textarea class='form-control' name='details' required>{{thing.details}}</textarea>
+		</div>
+		<div class="form-group">
+			<label for="category">Category</label>
+			<input type="text" class='form-control' name='category' value='{{thing.category}}'>
+		</div>
+		<div class="input-group mb-3">
+		  <div class="input-group-append">
+		    <label class="input-group-text" for="inputGroupSelect02">Priority</label>
+		  </div>
+		  <select class="custom-select mr-3" name="priority">
+		  	{{#ifvalue thing.priority value=3}}
+		    <option value=3 selected>High</option>
+		    {{else}}
+		    <option value=3>High</option>
+		    {{/ifvalue}}
+
+			{{#ifvalue thing.priority value=2}}
+		    <option value=2 selected>Normal</option>
+		    {{else}}
+		    <option value=2>Normal</option>
+			{{/ifvalue}}
+
+		    {{#ifvalue thing.priority value=1}}
+		    <option value=1 selected>Low</option>
+		    {{else}}
+		    <option value=1>Low</option>
+		    {{/ifvalue}}
+		  </select>
+
+		  <div class="input-group-append">
+		    <label class="input-group-text" for="inputGroupSelect02">Status</label>
+		  </div>
+		  <select class="custom-select" name="status">
+		  	{{#ifvalue thing.status value="Initial"}}
+		    <option value="Initial" selected>Initial</option>
+		    {{else}}
+		    <option value="Initial">Initial</option>
+		    {{/ifvalue}}
+
+		    {{#ifvalue thing.status value="InProgress"}}
+		    <option value="InProgress" selected>In Progress</option>
+		    {{else}}
+		    <option value="InProgress">In Progress</option>
+		    {{/ifvalue}}
+		    
+		    {{#ifvalue thing.status value="OnHold"}}
+		    <option value="OnHold" selected>On Hold</option>
+		    {{else}}
+		    <option value="OnHold">On Hold</option>
+		    {{/ifvalue}}
+		    
+		    {{#ifvalue thing.status value="Completed"}}
+		    <option value="Completed" selected>Completed</option>
+		    {{else}}
+		    <option value="Completed">Completed</option>
+		    {{/ifvalue}}
+		  </select>
+		</div>
+		
+		<div class="form-group">
+			<label for="link">URL</label>
+			<div class="input-group mb-3">
+			  <div class="input-group-prepend">
+			    <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+			  </div>
+			  <input type="text" class="form-control" name="link" aria-describedby="basic-addon3" value='{{thing.link}}'>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="deadline">Deadline</label>
+			<input type="text" class='form-control' name='deadline' placeholder='mm/dd/yyyy' value='{{formatDate thing.deadline}}'>
+		</div>
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+</div>

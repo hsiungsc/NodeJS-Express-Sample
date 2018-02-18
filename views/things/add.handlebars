@@ -1,0 +1,51 @@
+<div class="card card-body">
+	<h3>New Thing</h3>
+	<form action="/things" method='post'>
+		<div class="form-group">
+			<label for="subject">Subject <b><font color='red'>*</font></b></label>
+			<input type="text" class='form-control' name='subject' required>
+		</div>
+		<div class="form-group">
+			<label for="detail">Details <b><font color='red'>*</font></b></label>
+			<textarea class='form-control' name='details' required></textarea>
+		</div>
+		<div class="form-group">
+			<label for="category">Category</label>
+			<input type="text" class='form-control' name='category' placeholder='None'>
+		</div>
+		<div class="input-group mb-3">
+		  <div class="input-group-append">
+		    <label class="input-group-text" for="inputGroupSelect02">Priority</label>
+		  </div>
+		  <select class="custom-select mr-3" name="priority">
+		    <option value=3>High</option>
+		    <option value=2 selected>Normal</option>
+		    <option value=1>Low</option>
+		  </select>
+
+		  <div class="input-group-append">
+		    <label class="input-group-text" for="inputGroupSelect02">Status</label>
+		  </div>
+		  <select class="custom-select" name="status">
+		    <option value="Initial" selected>Initial</option>
+		    <option value="InProgress">In Progress</option>
+		    <option value="OnHold">On Hold</option>
+		    <option value="Completed">Completed</option>
+		  </select>
+		</div>
+		<div class="form-group">
+			<label for="link">URL</label>
+			<div class="input-group mb-3">
+			  <div class="input-group-prepend">
+			    <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+			  </div>
+			  <input type="text" class="form-control" name="link" aria-describedby="basic-addon3">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="deadline">Deadline</label>
+			<input type="text" class='form-control' name='deadline' placeholder='mm/dd/yyyy'>
+		</div>
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+</div>
